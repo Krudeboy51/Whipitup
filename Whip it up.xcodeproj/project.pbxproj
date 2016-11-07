@@ -18,6 +18,7 @@
 		94DF3F3F1DD10A59008B0ABD /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF3F3E1DD10A59008B0ABD /* RecipeViewController.swift */; };
 		94DF3F411DD10A81008B0ABD /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF3F401DD10A81008B0ABD /* ContainerViewController.swift */; };
 		94DF3F431DD10AA3008B0ABD /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF3F421DD10AA3008B0ABD /* JSONParser.swift */; };
+		94DF3F451DD13183008B0ABD /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DF3F441DD13183008B0ABD /* CustomTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		94DF3F3E1DD10A59008B0ABD /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		94DF3F401DD10A81008B0ABD /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		94DF3F421DD10AA3008B0ABD /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		94DF3F441DD13183008B0ABD /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				94DF3F3E1DD10A59008B0ABD /* RecipeViewController.swift */,
 				94DF3F401DD10A81008B0ABD /* ContainerViewController.swift */,
 				94DF3F421DD10AA3008B0ABD /* JSONParser.swift */,
+				94DF3F441DD13183008B0ABD /* CustomTableViewCell.xib */,
 			);
 			path = "Whip it up";
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 			files = (
 				94DF3F111DD0F2D4008B0ABD /* LaunchScreen.storyboard in Resources */,
 				94DF3F0E1DD0F2D4008B0ABD /* Assets.xcassets in Resources */,
+				94DF3F451DD13183008B0ABD /* CustomTableViewCell.xib in Resources */,
 				94DF3F0C1DD0F2D4008B0ABD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

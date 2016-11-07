@@ -8,11 +8,28 @@
 
 import UIKit
 
+class CustomTBVCell : UITableViewCell{
+    
+    @IBOutlet weak var recimage: UIImageView!
+    @IBOutlet var rectitle: UILabel!
+    
+    func loaditems(title: String, image: String){
+        recimage.image = UIImage(named: image)
+        rectitle.text = title
+    }
+}
+
 class RecipeTableViewController: UITableViewController {
+    
+    var jsonParser = JSONParser()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let list: [String] = ["bacon","eggs","cheese"]
+        jsonParser.requestJson(list)
+        
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -28,24 +45,28 @@ class RecipeTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        print(jsonParser.parsedInformation.count)
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return jsonParser.parsedInformation.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
 
-        // Configure the cell...
+        let mDict = jsonParser.parsedInformation[indexPath.row] as Dictionary<String, String>
+        cell.textLabel?.text = mDict["title"]
 
         return cell
     }
-    */
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

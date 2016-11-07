@@ -10,15 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var jsonParser = JSONParser()
+   // var jsonParser = JSONParser()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let list: [String] = ["bacon","eggs","cheese"]
-        jsonParser.requestJson(list)
-        print(link)
+        //let list: [String] = ["bacon","eggs","cheese"]
+       // jsonParser.requestJson(list)
+        //print(link)
         
     }
 

@@ -59,7 +59,6 @@ class JSONParser: NSObject {
                                 self.currentDataDictionary["publsher_url"] = recipe["publisher_url"] as? String
                                 self.parsedInformation.append(self.currentDataDictionary)
                             }
-                            print(self.parsedInformation)
                         }
                     }
                 }catch{

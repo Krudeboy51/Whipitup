@@ -19,5 +19,98 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Whip it up/RecipeTableViewController.swift"
+            timestampString = "500249370.838013"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "CustomTBVCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Whip_it_up.RecipeTableViewController.jsonParser.getter : Whip_it_up.JSONParser"
+                  moduleName = "Whip it up"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kingke/Desktop/Whip%20it%20up/Whip%20it%20up/RecipeTableViewController.swift"
+                  timestampString = "500249370.873512"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Whip_it_up.RecipeTableViewController.jsonParser.setter : Whip_it_up.JSONParser"
+                  moduleName = "Whip it up"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kingke/Desktop/Whip%20it%20up/Whip%20it%20up/RecipeTableViewController.swift"
+                  timestampString = "500249370.873677"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Whip_it_up.RecipeTableViewController.init (style : __C.UITableViewStyle) -&gt; Whip_it_up.RecipeTableViewController"
+                  moduleName = "Whip it up"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kingke/Desktop/Whip%20it%20up/Whip%20it%20up/RecipeTableViewController.swift"
+                  timestampString = "500249370.873752"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Whip_it_up.RecipeTableViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; Whip_it_up.RecipeTableViewController"
+                  moduleName = "Whip it up"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kingke/Desktop/Whip%20it%20up/Whip%20it%20up/RecipeTableViewController.swift"
+                  timestampString = "500249370.873822"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "57">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Whip_it_up.RecipeTableViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Whip_it_up.RecipeTableViewController&gt;"
+                  moduleName = "Whip it up"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kingke/Desktop/Whip%20it%20up/Whip%20it%20up/RecipeTableViewController.swift"
+                  timestampString = "500249370.873892"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
