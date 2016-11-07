@@ -54,11 +54,12 @@ class JSONParser: NSObject {
                         if let recipes = json["recipes"] as? [[String: AnyObject]] {
                             for recipe in recipes{
                                 self.currentDataDictionary["title"] = recipe["title"] as? String
-                                self.currentDataDictionary["source_url"] = recipe["source_url"] as? String
+                                self.currentDataDictionary["f2f_url"] = recipe["f2f_url"] as? String
                                 self.currentDataDictionary["image_url"] = recipe["image_url"] as? String
                                 self.currentDataDictionary["publsher_url"] = recipe["publisher_url"] as? String
-                                print(self.currentDataDictionary)
+                                self.parsedInformation.append(self.currentDataDictionary)
                             }
+                            print(self.parsedInformation)
                         }
                     }
                 }catch{
