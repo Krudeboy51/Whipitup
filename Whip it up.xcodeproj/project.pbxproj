@@ -14,6 +14,8 @@
 		94DF3F111DD0F2D4008B0ABD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94DF3F0F1DD0F2D4008B0ABD /* LaunchScreen.storyboard */; };
 		94DF3F1C1DD0F2D4008B0ABD /* Whip_it_upTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF3F1B1DD0F2D4008B0ABD /* Whip_it_upTests.swift */; };
 		94DF3F271DD0F2D4008B0ABD /* Whip_it_upUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF3F261DD0F2D4008B0ABD /* Whip_it_upUITests.swift */; };
+		94DF3F3A1DD0FFE4008B0ABD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 94DF3F381DD0FFE4008B0ABD /* Default.png */; };
+		94DF3F3B1DD0FFE4008B0ABD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94DF3F391DD0FFE4008B0ABD /* Default@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		94DF3F221DD0F2D4008B0ABD /* Whip it upUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Whip it upUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94DF3F261DD0F2D4008B0ABD /* Whip_it_upUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whip_it_upUITests.swift; sourceTree = "<group>"; };
 		94DF3F281DD0F2D4008B0ABD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94DF3F381DD0FFE4008B0ABD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../Default.png; sourceTree = "<group>"; };
+		94DF3F391DD0FFE4008B0ABD /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../../Default@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 		94DF3F051DD0F2D4008B0ABD /* Whip it up */ = {
 			isa = PBXGroup;
 			children = (
+				94DF3F381DD0FFE4008B0ABD /* Default.png */,
+				94DF3F391DD0FFE4008B0ABD /* Default@2x.png */,
 				94DF3F061DD0F2D4008B0ABD /* AppDelegate.swift */,
 				94DF3F081DD0F2D4008B0ABD /* ViewController.swift */,
 				94DF3F0A1DD0F2D4008B0ABD /* Main.storyboard */,
@@ -193,6 +199,7 @@
 				TargetAttributes = {
 					94DF3F021DD0F2D4008B0ABD = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = T3JXW3P9UL;
 					};
 					94DF3F161DD0F2D4008B0ABD = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -231,7 +238,9 @@
 			files = (
 				94DF3F111DD0F2D4008B0ABD /* LaunchScreen.storyboard in Resources */,
 				94DF3F0E1DD0F2D4008B0ABD /* Assets.xcassets in Resources */,
+				94DF3F3B1DD0FFE4008B0ABD /* Default@2x.png in Resources */,
 				94DF3F0C1DD0F2D4008B0ABD /* Main.storyboard in Resources */,
+				94DF3F3A1DD0FFE4008B0ABD /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,10 +410,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Whip it up/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mrkking.Whip-it-up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -412,10 +426,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Whip it up/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mrkking.Whip-it-up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
