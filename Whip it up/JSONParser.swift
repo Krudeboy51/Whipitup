@@ -28,6 +28,26 @@ import UIKit
 
 class JSONParser: NSObject {
     
+    private func createLink(list: [String], page: Int)->NSURL?{
+        
+        let urlComp = NSURLComponents(string: mConstants.linkHeader)
+        var linkparams = Dictionary<String, String>()
+        linkparams[mConstants.key] = mConstants.APIKey.food2forkAPI
+        linkparams[mConstants.linkVars.query] = list.joinWithSeparator(" ")
+        linkparams[mConstants.linkVars.page] = "\(page)"
+        
+        var query = Array<NSURLQueryItem>()
+        
+        for (key, value) in linkparams{
+            query.append(NSURLQueryItem(name: key, value: value))
+        }
+        
+        urlComp?.queryItems = query
+        print(urlComp?.string)
+        return urlComp?.URL
+    }
+    
+    
     let mKey = "65bf042ad9f43f34d5cc710479e7fac7"
     let mainLinkHeader = "http://food2fork.com/api/search?key="
     var parsedInformation = [Dictionary<String, String>]()
@@ -36,7 +56,15 @@ class JSONParser: NSObject {
     var page = 1
     
     
+    
+    
+    
+    //MARK: soon to be depreciated
+    
     func requestJson(list: [String]){
+       // print("printing link from new func:")
+       // createLink(list, page: 1)
+       // print("printing link from old func:")
         let requestURL: NSURL = NSURL(string: setupLink(list, nxtPage: true))!
         let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL)
         let session = NSURLSession.sharedSession()
@@ -57,6 +85,7 @@ class JSONParser: NSObject {
                                 self.currentDataDictionary["f2f_url"] = recipe["f2f_url"] as? String
                                 self.currentDataDictionary["image_url"] = recipe["image_url"] as? String
                                 self.currentDataDictionary["publsher_url"] = recipe["publisher_url"] as? String
+                                self.currentDataDictionary["social_rank"] = recipe["social_rank"] as? String
                                 self.parsedInformation.append(self.currentDataDictionary)
                             }
                         }
@@ -72,7 +101,6 @@ class JSONParser: NSObject {
     func setupLink(list: [String], nxtPage: Bool) -> String{
         
         var link = mainLinkHeader+mKey+"&q="
-        let list: [String] = ["bacon","eggs","cheese"]
         
         for i in list{
             link += i+"%20"

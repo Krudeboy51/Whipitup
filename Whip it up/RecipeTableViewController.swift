@@ -8,16 +8,7 @@
 
 import UIKit
 
-class CustomTBVCell : UITableViewCell{
-    
-    @IBOutlet weak var recimage: UIImageView!
-    @IBOutlet var rectitle: UILabel!
-    
-    func loaditems(title: String, image: String){
-        recimage.image = UIImage(named: image)
-        rectitle.text = title
-    }
-}
+
 
 class RecipeTableViewController: UITableViewController {
     
@@ -25,7 +16,7 @@ class RecipeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let list: [String] = ["bacon","eggs","cheese"]
+        let list: [String] = ["bacon"]
         jsonParser.requestJson(list)
         
         
@@ -55,10 +46,11 @@ class RecipeTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTBVCell
 
         let mDict = jsonParser.parsedInformation[indexPath.row] as Dictionary<String, String>
-        cell.textLabel?.text = mDict["title"]
+        cell.rectitle.text = mDict["title"]?.stringByReplacingOccurrencesOfString("&amp;", withString: "&")
+        loadAsyncImgs(mDict[mConstants.keys.imgURL]!, imgV: cell.recimage)
 
         return cell
     }
@@ -67,6 +59,23 @@ class RecipeTableViewController: UITableViewController {
         return 80
     }
     
+    func loadAsyncImgs(url: String, imgV: UIImageView){
+        let dlQueue = dispatch_queue_create("com.mrkking.whipitup", nil)
+        
+        dispatch_async(dlQueue){
+            let data = NSData(contentsOfURL: NSURL(string: url)!)
+            
+            var image: UIImage?
+            
+            if data != nil{
+                image = UIImage(data: data!)
+            }
+            
+            dispatch_async(dispatch_get_main_queue()){
+                imgV.image = image
+            }
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
