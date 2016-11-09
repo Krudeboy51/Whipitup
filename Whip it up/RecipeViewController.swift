@@ -10,11 +10,11 @@ import UIKit
 
 class RecipeViewController: UIViewController, UITableViewDataSource {
 
-    @IBOutlet weak var webview: UIWebView!
+    //@IBOutlet weak var webview: UIWebView!
     @IBOutlet weak var ingredientstbl: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        webview.hidden = true
+       // webview.hidden = true
         //ingredientstbl.hidden = true
         // Do any additional setup after loading the view.
     }

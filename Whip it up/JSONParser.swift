@@ -24,17 +24,36 @@
  }
  */
 
+/*
+ {
+ "title":"Recipe Puppy",
+ "version":0.1,
+ "href":"http:\/\/www.recipepuppy.com\/",
+ "results":[
+    {
+        "title":"Vegetable-Pasta Oven Omelet",
+        "href":"http:\/\/find.myrecipes.com\/recipes\/recipefinder.dyn?action=displayRecipe&recipe_id=520763",
+        "ingredients":"tomato, onions, red pepper, garlic, olive oil, zucchini, cream cheese, vermicelli, eggs, parmesan cheese, milk, italian seasoning, salt, black pepper",
+        "thumbnail":"http:\/\/img.recipepuppy.com\/560556.jpg"
+    }
+ }
+ sample link: http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3
+ i : comma delimited ingredients
+ q : normal search query
+ p : page
+ format=xml : if you want xml instead of json
+ */
+
 import UIKit
 
 class JSONParser: NSObject {
     
-    private func createLink(list: [String], page: Int)->NSURL?{
+    private func createLink(list: String, page: Int)->NSURL?{
         
         let urlComp = NSURLComponents(string: mConstants.linkHeader)
         var linkparams = Dictionary<String, String>()
-        linkparams[mConstants.key] = mConstants.APIKey.food2forkAPI
-        linkparams[mConstants.linkVars.query] = list.joinWithSeparator(" ")
         linkparams[mConstants.linkVars.page] = "\(page)"
+        linkparams[mConstants.linkVars.ingredients] = list
         
         var query = Array<NSURLQueryItem>()
         
@@ -48,24 +67,27 @@ class JSONParser: NSObject {
     }
     
     
-    let mKey = "65bf042ad9f43f34d5cc710479e7fac7"
-    let mainLinkHeader = "http://food2fork.com/api/search?key="
     var parsedInformation = [Dictionary<String, String>]()
     var currentDataDictionary = Dictionary<String, String>()
-    var JSONInfo = ""
-    var page = 1
+   // var JSONInfo = ""
+   // var page = 1
     
     
-    
+    func validateParsedData(){
+        var index = 0
+        for i in parsedInformation{
+            if i[mConstants.keys.title] == ""{
+                parsedInformation.removeAtIndex(index)
+            }
+            index += 1
+        }
+    }
     
     
     //MARK: soon to be depreciated
     
-    func requestJson(list: [String]){
-       // print("printing link from new func:")
-       // createLink(list, page: 1)
-       // print("printing link from old func:")
-        let requestURL: NSURL = NSURL(string: setupLink(list, nxtPage: true))!
+    func requestJson(ingredients: String, isNewQuery: Bool = false, page: Int = 1){
+        let requestURL: NSURL = createLink(ingredients, page: page)!
         let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(urlRequest) {
@@ -76,42 +98,32 @@ class JSONParser: NSObject {
             
             if (statusCode == 200) {
                 do{
-                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
-                    let count = json["count"] as? Int
-                    if count > 0{
-                        if let recipes = json["recipes"] as? [[String: AnyObject]] {
-                            for recipe in recipes{
-                                self.currentDataDictionary["title"] = recipe["title"] as? String
-                                self.currentDataDictionary["f2f_url"] = recipe["f2f_url"] as? String
-                                self.currentDataDictionary["image_url"] = recipe["image_url"] as? String
-                                self.currentDataDictionary["publsher_url"] = recipe["publisher_url"] as? String
-                                self.currentDataDictionary["social_rank"] = recipe["social_rank"] as? String
+                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments) as! [String: AnyObject]
+                    
+                    if self.parsedInformation.count != 0 && isNewQuery == true{
+                        self.parsedInformation.removeAll()
+                    }
+                   
+                    if let recipes = json[mConstants.keys.results] as? [[String: AnyObject]]{
+                     
+                        for recipe in recipes{
+                                self.currentDataDictionary[mConstants.keys.title] = recipe[mConstants.keys.title] as? String
+                                self.currentDataDictionary[mConstants.keys.recURL] = recipe[mConstants.keys.recURL] as? String
+                                self.currentDataDictionary[mConstants.keys.ingredients] = recipe[mConstants.keys.ingredients] as? String
+                                self.currentDataDictionary[mConstants.keys.thumbURL] = recipe[mConstants.keys.thumbURL] as? String
                                 self.parsedInformation.append(self.currentDataDictionary)
                             }
-                        }
+                        
+                        self.validateParsedData()
                     }
+                    //print(self.parsedInformation)
+                    
                 }catch{
                     print("The must be an error with the Json data: \(error)")
                 }
             }
         }
         task.resume()
-    }
-    
-    func setupLink(list: [String], nxtPage: Bool) -> String{
-        
-        var link = mainLinkHeader+mKey+"&q="
-        
-        for i in list{
-            link += i+"%20"
-        }
-        
-        if nxtPage {
-            link += "&page=\(page)"
-            page += 1
-        }
-        print(link)
-        return link;
     }
     
 }

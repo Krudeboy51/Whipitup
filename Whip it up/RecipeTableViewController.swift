@@ -10,16 +10,24 @@ import UIKit
 
 
 
-class RecipeTableViewController: UITableViewController {
+class RecipeTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     var jsonParser = JSONParser()
+    let searchController = UISearchController(searchResultsController: nil)
+    var mainlist = [Dictionary<String, String>]()
+    var searchString = ""
+    var page = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let list: [String] = ["bacon"]
-        jsonParser.requestJson(list)
+       
+        mainlist = jsonParser.parsedInformation
         
-        
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        self.tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.placeholder = "search e.g. eggs"
+        searchController.searchBar.delegate = self
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -36,22 +44,27 @@ class RecipeTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        print(jsonParser.parsedInformation.count)
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jsonParser.parsedInformation.count
+        if mainlist.count != 0{
+            return mainlist.count
+        }else{
+            return 1
+        }
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTBVCell
-
-        let mDict = jsonParser.parsedInformation[indexPath.row] as Dictionary<String, String>
-        cell.rectitle.text = mDict["title"]?.stringByReplacingOccurrencesOfString("&amp;", withString: "&")
-        loadAsyncImgs(mDict[mConstants.keys.imgURL]!, imgV: cell.recimage)
-
+        if mainlist.count != 0{
+            let mDict = mainlist[indexPath.row] as Dictionary<String, String>
+            cell.rectitle.text = mDict[mConstants.keys.title]?.stringByReplacingOccurrencesOfString("&amp;", withString: "&")
+            loadAsyncImgs(mDict[mConstants.keys.thumbURL]!, imgV: cell.recimage, position: indexPath.row )
+        }else{
+            cell.rectitle.text = "Sorry we did not find any recipes, please try again :-("
+        }
         return cell
     }
     
@@ -59,7 +72,7 @@ class RecipeTableViewController: UITableViewController {
         return 80
     }
     
-    func loadAsyncImgs(url: String, imgV: UIImageView){
+    func loadAsyncImgs(url: String, imgV: UIImageView, position: Int){
         let dlQueue = dispatch_queue_create("com.mrkking.whipitup", nil)
         
         dispatch_async(dlQueue){
@@ -69,6 +82,8 @@ class RecipeTableViewController: UITableViewController {
             
             if data != nil{
                 image = UIImage(data: data!)
+            }else{
+                print("image did not load"+self.mainlist[position])
             }
             
             dispatch_async(dispatch_get_main_queue()){
@@ -76,50 +91,29 @@ class RecipeTableViewController: UITableViewController {
             }
         }
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+  /*
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let lastrow = mainlist.count-1
+        if indexPath.row == lastrow{
+            jsonParser.requestJson(searchString, isNewQuery: false, page: page)
+            mainlist = jsonParser.parsedInformation
+        }
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        jsonParser.requestJson(searchBar.text!)
+        print(jsonParser.parsedInformation.count)
+        mainlist = jsonParser.parsedInformation
+        self.tableView.reloadData()
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        if searchController.searchBar.text == ""{
+            mainlist.removeAll()
+        }
+        searchString = searchController.searchBar.text!
+        self.tableView.reloadData()
+    }*/
+    
 
 }
