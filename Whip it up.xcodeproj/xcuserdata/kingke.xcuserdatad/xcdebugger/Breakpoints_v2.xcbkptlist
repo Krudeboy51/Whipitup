@@ -58,7 +58,7 @@
                   moduleName = "Whip it up"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kingke/Desktop/WhipItUp/Whip%20it%20up/RecipeViewController.swift"
-                  timestampString = "500317167.433836"
+                  timestampString = "500417584.366294"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -73,12 +73,12 @@
                   moduleName = "Whip it up"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kingke/Desktop/WhipItUp/Whip%20it%20up/RecipeViewController.swift"
-                  timestampString = "500317167.433997"
+                  timestampString = "500417584.366445"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
-                  offsetFromSymbolStart = "107">
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "70">
                </Location>
                <Location
                   shouldBeEnabled = "No"
@@ -88,12 +88,12 @@
                   moduleName = "Whip it up"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kingke/Desktop/WhipItUp/Whip%20it%20up/RecipeViewController.swift"
-                  timestampString = "500317167.434077"
+                  timestampString = "500417584.36652"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
-                  offsetFromSymbolStart = "105">
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -153,12 +153,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Whip it up/RecipeTableViewController.swift"
-            timestampString = "500414730.8607"
+            timestampString = "500417677.808827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "tableView(_:willDisplayCell:forRowAtIndexPath:)"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

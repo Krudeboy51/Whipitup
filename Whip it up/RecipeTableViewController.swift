@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class RecipeTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
     
     var jsonParser = JSONParser()
     let searchController = UISearchController(searchResultsController: nil)
@@ -71,6 +71,7 @@ class RecipeTableViewController: UITableViewController, UISearchResultsUpdating,
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
     }
+ 
     
     func loadAsyncImgs(url: String, imgV: UIImageView, position: Int){
         let dlQueue = dispatch_queue_create("com.mrkking.whipitup", nil)
@@ -83,7 +84,10 @@ class RecipeTableViewController: UITableViewController, UISearchResultsUpdating,
             if data != nil{
                 image = UIImage(data: data!)
             }else{
-                print("image did not load"+self.mainlist[position])
+                print("image did not load \(position)")
+                //print(self.mainlist[position])
+                self.mainlist.removeAtIndex(position)
+                self.tableView.reloadData()
             }
             
             dispatch_async(dispatch_get_main_queue()){
@@ -91,7 +95,19 @@ class RecipeTableViewController: UITableViewController, UISearchResultsUpdating,
             }
         }
     }
-  /*
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let dict = mainlist[indexPath.row]
+        
+        let list = dict[mConstants.keys.ingredients]
+        
+        let recipeVC = UIStoryboard(name: "main", bundle: nil).instantiateViewControllerWithIdentifier("recipeVC") as! RecipeViewController
+        
+        //recipeVC.list = list?.componentsSeparatedByString(",")
+        
+        showDetailViewController(recipeVC, sender: self)
+    }
+
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         let lastrow = mainlist.count-1
         if indexPath.row == lastrow{
@@ -113,7 +129,7 @@ class RecipeTableViewController: UITableViewController, UISearchResultsUpdating,
         }
         searchString = searchController.searchBar.text!
         self.tableView.reloadData()
-    }*/
+    }
     
 
 }

@@ -12,6 +12,9 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
 
     //@IBOutlet weak var webview: UIWebView!
     @IBOutlet weak var ingredientstbl: UITableView!
+    
+    var list: [String]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        // webview.hidden = true
@@ -25,16 +28,16 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = ingredientstbl.dequeueReusableCellWithIdentifier("ingredientcell")!
-        cell.textLabel?.text = "Hello"
+        let cell = ingredientstbl.dequeueReusableCellWithIdentifier("ingredientCell")!
+        cell.textLabel?.text = "h"
         return cell
     }
     
