@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		94014E3D1DD219B700D47E76 /* CustomTBVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94014E3C1DD219B700D47E76 /* CustomTBVCell.swift */; };
-		94014E3F1DD21E5B00D47E76 /* mConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94014E3E1DD21E5B00D47E76 /* mConstants.swift */; };
+		9457B33F1DD6158700EA38EB /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9457B33E1DD6158700EA38EB /* SwiftyJSON.swift */; };
+		9457B3881DD66C2400EA38EB /* MCONSTANTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9457B3871DD66C2400EA38EB /* MCONSTANTS.swift */; };
+		9457B38B1DD66CC300EA38EB /* F2FJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9457B3891DD66CC300EA38EB /* F2FJsonParser.swift */; };
+		9457B38C1DD66CC300EA38EB /* MashapeJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9457B38A1DD66CC300EA38EB /* MashapeJsonParser.swift */; };
 		94DF3F071DD0F2D4008B0ABD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF3F061DD0F2D4008B0ABD /* AppDelegate.swift */; };
 		94DF3F091DD0F2D4008B0ABD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF3F081DD0F2D4008B0ABD /* ViewController.swift */; };
 		94DF3F0C1DD0F2D4008B0ABD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94DF3F0A1DD0F2D4008B0ABD /* Main.storyboard */; };
@@ -19,7 +22,6 @@
 		94DF3F3D1DD10A21008B0ABD /* RecipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF3F3C1DD10A21008B0ABD /* RecipeTableViewController.swift */; };
 		94DF3F3F1DD10A59008B0ABD /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF3F3E1DD10A59008B0ABD /* RecipeViewController.swift */; };
 		94DF3F411DD10A81008B0ABD /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF3F401DD10A81008B0ABD /* ContainerViewController.swift */; };
-		94DF3F431DD10AA3008B0ABD /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF3F421DD10AA3008B0ABD /* JSONParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +43,10 @@
 
 /* Begin PBXFileReference section */
 		94014E3C1DD219B700D47E76 /* CustomTBVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTBVCell.swift; sourceTree = "<group>"; };
-		94014E3E1DD21E5B00D47E76 /* mConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mConstants.swift; sourceTree = "<group>"; };
+		9457B33E1DD6158700EA38EB /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = "../../../Downloads/SwiftyJSON-master/Source/SwiftyJSON.swift"; sourceTree = "<group>"; };
+		9457B3871DD66C2400EA38EB /* MCONSTANTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCONSTANTS.swift; sourceTree = "<group>"; };
+		9457B3891DD66CC300EA38EB /* F2FJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F2FJsonParser.swift; sourceTree = "<group>"; };
+		9457B38A1DD66CC300EA38EB /* MashapeJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MashapeJsonParser.swift; sourceTree = "<group>"; };
 		94DF3F031DD0F2D4008B0ABD /* Whip it up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Whip it up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94DF3F061DD0F2D4008B0ABD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94DF3F081DD0F2D4008B0ABD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,7 +63,6 @@
 		94DF3F3C1DD10A21008B0ABD /* RecipeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewController.swift; sourceTree = "<group>"; };
 		94DF3F3E1DD10A59008B0ABD /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		94DF3F401DD10A81008B0ABD /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
-		94DF3F421DD10AA3008B0ABD /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,9 @@
 		94DF3F051DD0F2D4008B0ABD /* Whip it up */ = {
 			isa = PBXGroup;
 			children = (
+				9457B3891DD66CC300EA38EB /* F2FJsonParser.swift */,
+				9457B38A1DD66CC300EA38EB /* MashapeJsonParser.swift */,
+				9457B33E1DD6158700EA38EB /* SwiftyJSON.swift */,
 				94DF3F061DD0F2D4008B0ABD /* AppDelegate.swift */,
 				94DF3F081DD0F2D4008B0ABD /* ViewController.swift */,
 				94DF3F0A1DD0F2D4008B0ABD /* Main.storyboard */,
@@ -118,9 +125,8 @@
 				94DF3F3C1DD10A21008B0ABD /* RecipeTableViewController.swift */,
 				94DF3F3E1DD10A59008B0ABD /* RecipeViewController.swift */,
 				94DF3F401DD10A81008B0ABD /* ContainerViewController.swift */,
-				94DF3F421DD10AA3008B0ABD /* JSONParser.swift */,
 				94014E3C1DD219B700D47E76 /* CustomTBVCell.swift */,
-				94014E3E1DD21E5B00D47E76 /* mConstants.swift */,
+				9457B3871DD66C2400EA38EB /* MCONSTANTS.swift */,
 			);
 			path = "Whip it up";
 			sourceTree = "<group>";
@@ -277,10 +283,12 @@
 			files = (
 				94014E3D1DD219B700D47E76 /* CustomTBVCell.swift in Sources */,
 				94DF3F3F1DD10A59008B0ABD /* RecipeViewController.swift in Sources */,
+				9457B38C1DD66CC300EA38EB /* MashapeJsonParser.swift in Sources */,
 				94DF3F3D1DD10A21008B0ABD /* RecipeTableViewController.swift in Sources */,
-				94DF3F431DD10AA3008B0ABD /* JSONParser.swift in Sources */,
+				9457B3881DD66C2400EA38EB /* MCONSTANTS.swift in Sources */,
+				9457B38B1DD66CC300EA38EB /* F2FJsonParser.swift in Sources */,
 				94DF3F411DD10A81008B0ABD /* ContainerViewController.swift in Sources */,
-				94014E3F1DD21E5B00D47E76 /* mConstants.swift in Sources */,
+				9457B33F1DD6158700EA38EB /* SwiftyJSON.swift in Sources */,
 				94DF3F091DD0F2D4008B0ABD /* ViewController.swift in Sources */,
 				94DF3F071DD0F2D4008B0ABD /* AppDelegate.swift in Sources */,
 			);

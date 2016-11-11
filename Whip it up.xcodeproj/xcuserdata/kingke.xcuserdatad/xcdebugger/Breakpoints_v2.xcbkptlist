@@ -105,11 +105,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Whip it up/JSONParser.swift"
-            timestampString = "500412419.325106"
+            timestampString = "500570563.573229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "validateParsedData()"
             landmarkType = "5">
             <Locations>
@@ -159,6 +159,22 @@
             startingLineNumber = "106"
             endingLineNumber = "106"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Downloads/SwiftyJSON-master/Source/SwiftyJSON.swift"
+            timestampString = "500569833.808322"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
+            landmarkName = "next()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

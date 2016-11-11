@@ -12,7 +12,7 @@ import UIKit
 
 class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
     
-    var jsonParser = JSONParser()
+    var jsonParser = F2FJsonParser()
     let searchController = UISearchController(searchResultsController: nil)
     var mainlist = [Dictionary<String, String>]()
     var searchString = ""
@@ -20,8 +20,8 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        mainlist = jsonParser.parsedInformation
+        
+        mainlist = jsonParser.mReicpeList
         
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
@@ -60,8 +60,8 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTBVCell
         if mainlist.count != 0{
             let mDict = mainlist[indexPath.row] as Dictionary<String, String>
-            cell.rectitle.text = mDict[mConstants.keys.title]?.stringByReplacingOccurrencesOfString("&amp;", withString: "&")
-            loadAsyncImgs(mDict[mConstants.keys.thumbURL]!, imgV: cell.recimage, position: indexPath.row )
+            cell.rectitle.text = mDict[mCONSTANTS.food2fork.resultKey.title]?.stringByReplacingOccurrencesOfString("&amp;", withString: "&")
+           // loadAsyncImgs(mDict[mConstants.keys.thumbURL]!, imgV: cell.recimage, position: indexPath.row )
         }else{
             cell.rectitle.text = "Sorry we did not find any recipes, please try again :-("
         }
@@ -97,29 +97,30 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let dict = mainlist[indexPath.row]
+        //let dict = mainlist[indexPath.row]
         
-        let list = dict[mConstants.keys.ingredients]
+        //let list = dict[mConstants.keys.ingredients]
         
-        let recipeVC = UIStoryboard(name: "main", bundle: nil).instantiateViewControllerWithIdentifier("recipeVC") as! RecipeViewController
+        //let recipeVC = UIStoryboard(name: "main", bundle: nil).instantiateViewControllerWithIdentifier("recipeVC") as! RecipeViewController
         
         //recipeVC.list = list?.componentsSeparatedByString(",")
         
-        showDetailViewController(recipeVC, sender: self)
+       // showDetailViewController(recipeVC, sender: self)
     }
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         let lastrow = mainlist.count-1
         if indexPath.row == lastrow{
-            jsonParser.requestJson(searchString, isNewQuery: false, page: page)
-            mainlist = jsonParser.parsedInformation
+            jsonParser.loadNextPage()
+            mainlist = jsonParser.mReicpeList
         }
     }
 
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        jsonParser.requestJson(searchBar.text!)
-        print(jsonParser.parsedInformation.count)
-        mainlist = jsonParser.parsedInformation
+        jsonParser.mReicpeList.removeAll()
+        mainlist.removeAll()
+        jsonParser.search(searchBar.text!)
+        mainlist = jsonParser.mReicpeList
         self.tableView.reloadData()
     }
     
@@ -128,6 +129,12 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
             mainlist.removeAll()
         }
         searchString = searchController.searchBar.text!
+        self.tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        mainlist.removeAll()
+        jsonParser.mReicpeList.removeAll()
         self.tableView.reloadData()
     }
     
