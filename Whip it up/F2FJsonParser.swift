@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class F2FJsonParser {
+class F2FJsonParser: NSObject {
     
     var page = 1
     var mReicpeList = [Dictionary<String, String>()]
@@ -52,16 +52,19 @@ class F2FJsonParser {
                         currentItem[mCONSTANTS.food2fork.resultKey.title] = item[mCONSTANTS.food2fork.resultKey.title].stringValue
                         currentItem[mCONSTANTS.food2fork.resultKey.sourceURL] = item[mCONSTANTS.food2fork.resultKey.sourceURL].stringValue
                         currentItem[mCONSTANTS.food2fork.resultKey.publisher] = item[mCONSTANTS.food2fork.resultKey.publisher].stringValue
+                        currentItem[mCONSTANTS.food2fork.resultKey.imageURL] = item[mCONSTANTS.food2fork.resultKey.imageURL].stringValue
+                        print("Recipe List (f2f): \(currentItem)\n\n")
                         self.mReicpeList.append(currentItem)
                     }
-                    print(self.mReicpeList)
+                    
                 }
             }
         )
         
         task.resume()
-
     }
+    
+    
     
     func search(list: String){
         searchString = list

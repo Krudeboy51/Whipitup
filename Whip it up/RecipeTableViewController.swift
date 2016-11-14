@@ -20,8 +20,10 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        jsonParser.search("")
         mainlist = jsonParser.mReicpeList
+        jsonParser.mReicpeList.removeAtIndex(0)
+        print(jsonParser.mReicpeList.count)
         
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
@@ -29,11 +31,10 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
         searchController.searchBar.placeholder = "search e.g. eggs"
         searchController.searchBar.delegate = self
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,20 +49,25 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if mainlist.count != 0{
-            return mainlist.count
-        }else{
-            return 1
-        }
+        return jsonParser.mReicpeList.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTBVCell
-        if mainlist.count != 0{
-            let mDict = mainlist[indexPath.row] as Dictionary<String, String>
-            cell.rectitle.text = mDict[mCONSTANTS.food2fork.resultKey.title]?.stringByReplacingOccurrencesOfString("&amp;", withString: "&")
-           // loadAsyncImgs(mDict[mConstants.keys.thumbURL]!, imgV: cell.recimage, position: indexPath.row )
+        let mDict: Dictionary<String, String> = jsonParser.mReicpeList[indexPath.row]
+        
+        if jsonParser.mReicpeList.count > 1{
+            let img = NSURL(string: mDict[mCONSTANTS.food2fork.resultKey.imageURL]!)
+            var pub = mDict[mCONSTANTS.food2fork.resultKey.publisher]
+            pub = pub?.stringByReplacingOccurrencesOfString("http://", withString: "")
+            cell.rectitle.text = mDict[mCONSTANTS.food2fork.resultKey.title]
+            cell.pub.text = pub
+            let data = NSData(contentsOfURL: img!)
+            if data != nil{
+                cell.recimage.image = UIImage(data: data!)
+            }
+            
         }else{
             cell.rectitle.text = "Sorry we did not find any recipes, please try again :-("
         }
@@ -109,32 +115,21 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
     }
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        let lastrow = mainlist.count-1
-        if indexPath.row == lastrow{
-            jsonParser.loadNextPage()
-            mainlist = jsonParser.mReicpeList
-        }
+        
     }
 
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        jsonParser.mReicpeList.removeAll()
-        mainlist.removeAll()
         jsonParser.search(searchBar.text!)
-        mainlist = jsonParser.mReicpeList
         self.tableView.reloadData()
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        if searchController.searchBar.text == ""{
-            mainlist.removeAll()
-        }
-        searchString = searchController.searchBar.text!
+        
         self.tableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        mainlist.removeAll()
-        jsonParser.mReicpeList.removeAll()
+
         self.tableView.reloadData()
     }
     

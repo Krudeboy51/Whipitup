@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		94014E3D1DD219B700D47E76 /* CustomTBVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94014E3C1DD219B700D47E76 /* CustomTBVCell.swift */; };
-		9457B33F1DD6158700EA38EB /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9457B33E1DD6158700EA38EB /* SwiftyJSON.swift */; };
+		941D0AA61DDA3D190025C8E2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941D0AA51DDA3D190025C8E2 /* SwiftyJSON.swift */; };
+		941D0AA81DDA61EA0025C8E2 /* ingredientsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941D0AA71DDA61EA0025C8E2 /* ingredientsCell.swift */; };
 		9457B3881DD66C2400EA38EB /* MCONSTANTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9457B3871DD66C2400EA38EB /* MCONSTANTS.swift */; };
 		9457B38B1DD66CC300EA38EB /* F2FJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9457B3891DD66CC300EA38EB /* F2FJsonParser.swift */; };
 		9457B38C1DD66CC300EA38EB /* MashapeJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9457B38A1DD66CC300EA38EB /* MashapeJsonParser.swift */; };
 		94DF3F071DD0F2D4008B0ABD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF3F061DD0F2D4008B0ABD /* AppDelegate.swift */; };
-		94DF3F091DD0F2D4008B0ABD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF3F081DD0F2D4008B0ABD /* ViewController.swift */; };
 		94DF3F0C1DD0F2D4008B0ABD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94DF3F0A1DD0F2D4008B0ABD /* Main.storyboard */; };
 		94DF3F0E1DD0F2D4008B0ABD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94DF3F0D1DD0F2D4008B0ABD /* Assets.xcassets */; };
 		94DF3F111DD0F2D4008B0ABD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94DF3F0F1DD0F2D4008B0ABD /* LaunchScreen.storyboard */; };
@@ -43,13 +43,13 @@
 
 /* Begin PBXFileReference section */
 		94014E3C1DD219B700D47E76 /* CustomTBVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTBVCell.swift; sourceTree = "<group>"; };
-		9457B33E1DD6158700EA38EB /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = "../../../Downloads/SwiftyJSON-master/Source/SwiftyJSON.swift"; sourceTree = "<group>"; };
+		941D0AA51DDA3D190025C8E2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		941D0AA71DDA61EA0025C8E2 /* ingredientsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ingredientsCell.swift; sourceTree = "<group>"; };
 		9457B3871DD66C2400EA38EB /* MCONSTANTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCONSTANTS.swift; sourceTree = "<group>"; };
 		9457B3891DD66CC300EA38EB /* F2FJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F2FJsonParser.swift; sourceTree = "<group>"; };
 		9457B38A1DD66CC300EA38EB /* MashapeJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MashapeJsonParser.swift; sourceTree = "<group>"; };
 		94DF3F031DD0F2D4008B0ABD /* Whip it up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Whip it up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94DF3F061DD0F2D4008B0ABD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		94DF3F081DD0F2D4008B0ABD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		94DF3F0B1DD0F2D4008B0ABD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94DF3F0D1DD0F2D4008B0ABD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94DF3F101DD0F2D4008B0ABD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -113,11 +113,10 @@
 		94DF3F051DD0F2D4008B0ABD /* Whip it up */ = {
 			isa = PBXGroup;
 			children = (
+				941D0AA51DDA3D190025C8E2 /* SwiftyJSON.swift */,
 				9457B3891DD66CC300EA38EB /* F2FJsonParser.swift */,
 				9457B38A1DD66CC300EA38EB /* MashapeJsonParser.swift */,
-				9457B33E1DD6158700EA38EB /* SwiftyJSON.swift */,
 				94DF3F061DD0F2D4008B0ABD /* AppDelegate.swift */,
-				94DF3F081DD0F2D4008B0ABD /* ViewController.swift */,
 				94DF3F0A1DD0F2D4008B0ABD /* Main.storyboard */,
 				94DF3F0D1DD0F2D4008B0ABD /* Assets.xcassets */,
 				94DF3F0F1DD0F2D4008B0ABD /* LaunchScreen.storyboard */,
@@ -127,6 +126,7 @@
 				94DF3F401DD10A81008B0ABD /* ContainerViewController.swift */,
 				94014E3C1DD219B700D47E76 /* CustomTBVCell.swift */,
 				9457B3871DD66C2400EA38EB /* MCONSTANTS.swift */,
+				941D0AA71DDA61EA0025C8E2 /* ingredientsCell.swift */,
 			);
 			path = "Whip it up";
 			sourceTree = "<group>";
@@ -284,12 +284,12 @@
 				94014E3D1DD219B700D47E76 /* CustomTBVCell.swift in Sources */,
 				94DF3F3F1DD10A59008B0ABD /* RecipeViewController.swift in Sources */,
 				9457B38C1DD66CC300EA38EB /* MashapeJsonParser.swift in Sources */,
+				941D0AA61DDA3D190025C8E2 /* SwiftyJSON.swift in Sources */,
+				941D0AA81DDA61EA0025C8E2 /* ingredientsCell.swift in Sources */,
 				94DF3F3D1DD10A21008B0ABD /* RecipeTableViewController.swift in Sources */,
 				9457B3881DD66C2400EA38EB /* MCONSTANTS.swift in Sources */,
 				9457B38B1DD66CC300EA38EB /* F2FJsonParser.swift in Sources */,
 				94DF3F411DD10A81008B0ABD /* ContainerViewController.swift in Sources */,
-				9457B33F1DD6158700EA38EB /* SwiftyJSON.swift in Sources */,
-				94DF3F091DD0F2D4008B0ABD /* ViewController.swift in Sources */,
 				94DF3F071DD0F2D4008B0ABD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

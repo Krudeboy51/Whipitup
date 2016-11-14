@@ -13,6 +13,7 @@ class CustomTBVCell : UITableViewCell{
     
     @IBOutlet weak var rectitle: UILabel!
     @IBOutlet weak var recimage: UIImageView!
+    @IBOutlet weak var pub: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -12,7 +12,7 @@ import UIKit
 /*curl --get --include 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=http%3A%2F%2Fallrecipes.com%2FRecipe%2FSlow-Cooker-Chicken-Tortilla-Soup%2FDetail.aspx' \
 -H 'X-Mashape-Key: DCrlBqI7Xjmsh1CsLRHWWDX89z5rp1EvsE6jsnjkh5Nnc7Vow6'*/
 
-class MashapeJsonParser{
+class MashapeJsonParser: NSObject{
     
     var mRecipeDetailList = [Dictionary<String, String>()]
     
@@ -57,7 +57,7 @@ class MashapeJsonParser{
                     currentItem[mCONSTANTS.mashape.resultsKey.servings] = parseData[mCONSTANTS.mashape.resultsKey.servings].string
                     self.mRecipeDetailList.append(currentItem)
                 
-                    print(self.mRecipeDetailList)
+                   // print(self.mRecipeDetailList)
                 }
             }
         )
