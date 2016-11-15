@@ -16,37 +16,36 @@ class F2FJsonParser: NSObject {
     var imgList =  Array<UIImage>()
     var searchString = ""
     
-    private func createLink(list: String, page: Int)->NSURL?{
+    fileprivate func createLink(_ list: String, page: Int)->URL?{
         
-        let urlComp = NSURLComponents(string: mCONSTANTS.food2fork.link)
+        var urlComp = URLComponents(string: mCONSTANTS.food2fork.link)
         var linkparams = Dictionary<String, String>()
         linkparams[mCONSTANTS.food2fork.linkKeys.page] = "\(page)"
         linkparams[mCONSTANTS.food2fork.linkKeys.query] = list
         linkparams[mCONSTANTS.food2fork.linkKeys.key] = mCONSTANTS.food2fork.apiKey
         
-        var query = Array<NSURLQueryItem>()
+        var query = Array<URLQueryItem>()
         
         for (key, value) in linkparams{
-            query.append(NSURLQueryItem(name: key, value: value))
+            query.append(URLQueryItem(name: key, value: value))
         }
         
         urlComp?.queryItems = query
-        print(urlComp?.string)
-        return urlComp?.URL
+        print(urlComp?.string! as Any)
+        return urlComp?.url
     }
     
-    private func getJsonFromLink(url: NSURL){
+    fileprivate func getJsonFromLink(_ url: URL){
         var currentItem = Dictionary<String, String>()
-        let request = NSMutableURLRequest(URL: url)
-        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        let task = session.dataTaskWithRequest(request, completionHandler:
+        let request = URLRequest(url: url)
+        URLSession.shared.dataTask(with: request, completionHandler:
             {
                 (data, response, error) in
                 if let mError = error {
                     print("Mayday we have a problem: \(mError)")
-                }else if let _ =  response, mData = data{
+                }else if let _ =  response, let mData = data{
                     var jError: NSError?
-                    let parseData = JSON.init(data: mData, options: NSJSONReadingOptions.AllowFragments, error: &jError)
+                    let parseData = JSON.init(data: mData, options: JSONSerialization.ReadingOptions.allowFragments, error: &jError)
                     
                     for item in parseData[mCONSTANTS.food2fork.resultKey.recipe].arrayValue{
                         currentItem[mCONSTANTS.food2fork.resultKey.title] = item[mCONSTANTS.food2fork.resultKey.title].stringValue
@@ -58,15 +57,42 @@ class F2FJsonParser: NSObject {
                     }
                     
                 }
+        }
+        ).resume()
+        /*
+         var currentItem = Dictionary<String, String>()
+         let request = URLRequest(url: url)
+         let session = URLSession(configuration: URLSessionConfiguration.default)
+         let task = URLSession.shared()dataTask(with: request, completionHandler:
+            {
+                (data, response, error) in
+                if let mError = error {
+                    print("Mayday we have a problem: \(mError)")
+                }else if let _ =  response, let mData = data{
+                    var jError: NSError?
+                    let parseData = JSON.init(data: mData, options: JSONSerialization.ReadingOptions.allowFragments, error: &jError)
+         
+                    for item in parseData[mCONSTANTS.food2fork.resultKey.recipe].arrayValue{
+                        currentItem[mCONSTANTS.food2fork.resultKey.title] = item[mCONSTANTS.food2fork.resultKey.title].stringValue
+                    currentItem[mCONSTANTS.food2fork.resultKey.sourceURL] = item[mCONSTANTS.food2fork.resultKey.sourceURL].stringValue
+                    currentItem[mCONSTANTS.food2fork.resultKey.publisher] = item[mCONSTANTS.food2fork.resultKey.publisher].stringValue
+                    currentItem[mCONSTANTS.food2fork.resultKey.imageURL] = item[mCONSTANTS.food2fork.resultKey.imageURL].stringValue
+                    print("Recipe List (f2f): \(currentItem)\n\n")
+                    self.mReicpeList.append(currentItem)
+                }
+         
             }
+        }
         )
+       
         
         task.resume()
+ */
     }
     
     
     
-    func search(list: String){
+    func search(_ list: String){
         searchString = list
         getJsonFromLink(createLink(searchString, page: page)!)
     }

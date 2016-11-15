@@ -47,12 +47,12 @@ class mCONSTANTS {
             static let cookMin = "cookingMinutes"
             static let servings = "servings"
             static let title = "title"
+            static let inglist = "extendedIngredients"
             struct ingredients {
                 static let amount = "amount"
                 static let name = "originalString"
                 static let image = "image"
                 static let aisle = "aisle"
-                static let unit = "unitShort"
             }
         }
     }

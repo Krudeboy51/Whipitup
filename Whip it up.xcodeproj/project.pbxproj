@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E783D9A1DDAB76700897E50 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E783D991DDAB76700897E50 /* RecipeModel.swift */; };
 		94014E3D1DD219B700D47E76 /* CustomTBVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94014E3C1DD219B700D47E76 /* CustomTBVCell.swift */; };
 		941D0AA61DDA3D190025C8E2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941D0AA51DDA3D190025C8E2 /* SwiftyJSON.swift */; };
 		941D0AA81DDA61EA0025C8E2 /* ingredientsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941D0AA71DDA61EA0025C8E2 /* ingredientsCell.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E783D991DDAB76700897E50 /* RecipeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		94014E3C1DD219B700D47E76 /* CustomTBVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTBVCell.swift; sourceTree = "<group>"; };
 		941D0AA51DDA3D190025C8E2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		941D0AA71DDA61EA0025C8E2 /* ingredientsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ingredientsCell.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				94014E3C1DD219B700D47E76 /* CustomTBVCell.swift */,
 				9457B3871DD66C2400EA38EB /* MCONSTANTS.swift */,
 				941D0AA71DDA61EA0025C8E2 /* ingredientsCell.swift */,
+				6E783D991DDAB76700897E50 /* RecipeModel.swift */,
 			);
 			path = "Whip it up";
 			sourceTree = "<group>";
@@ -212,19 +215,22 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Kory E King";
 				TargetAttributes = {
 					94DF3F021DD0F2D4008B0ABD = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = T3JXW3P9UL;
+						LastSwiftMigration = 0810;
 					};
 					94DF3F161DD0F2D4008B0ABD = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = 94DF3F021DD0F2D4008B0ABD;
 					};
 					94DF3F211DD0F2D4008B0ABD = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = 94DF3F021DD0F2D4008B0ABD;
 					};
 				};
@@ -282,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94014E3D1DD219B700D47E76 /* CustomTBVCell.swift in Sources */,
+				6E783D9A1DDAB76700897E50 /* RecipeModel.swift in Sources */,
 				94DF3F3F1DD10A59008B0ABD /* RecipeViewController.swift in Sources */,
 				9457B38C1DD66CC300EA38EB /* MashapeJsonParser.swift in Sources */,
 				941D0AA61DDA3D190025C8E2 /* SwiftyJSON.swift in Sources */,
@@ -359,8 +366,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -405,8 +414,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -425,6 +436,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -442,6 +454,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mrkking.Whip-it-up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -458,6 +471,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mrkking.Whip-it-up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -470,6 +484,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mrkking.Whip-it-upTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Whip it up.app/Whip it up";
 			};
 			name = Debug;
@@ -482,6 +497,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mrkking.Whip-it-upTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Whip it up.app/Whip it up";
 			};
 			name = Release;
@@ -493,6 +509,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mrkking.Whip-it-upUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Whip it up";
 			};
 			name = Debug;
@@ -504,6 +521,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mrkking.Whip-it-upUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Whip it up";
 			};
 			name = Release;

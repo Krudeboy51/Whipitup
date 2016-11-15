@@ -10,13 +10,20 @@ import UIKit
 
 class RecipeViewController: UIViewController, UITableViewDataSource {
 
-    //@IBOutlet weak var webview: UIWebView!
     @IBOutlet weak var ingredientstbl: UITableView!
+    @IBOutlet weak var recipeImage: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
     
-    var list: [String]!
+    var jsonParser = MashapeJsonParser()
+    
+    var list = [String]()
+    
+    var link = "http://allrecipes.com/recipe/15840/chicken-tortilla-soup-v/?internalSource=hub%20recipe&referringContentType=search%20results&clickId=cardslot%202"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        jsonParser.getJsonFromLink(link)
+        titleLabel.text = jsonParser.recipe.title
        // webview.hidden = true
         //ingredientstbl.hidden = true
         // Do any additional setup after loading the view.
@@ -27,16 +34,16 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+    func tableView( _ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = ingredientstbl.dequeueReusableCellWithIdentifier("ingredientCell")!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = ingredientstbl.dequeueReusableCell(withIdentifier: "ingredientCell")!
         cell.textLabel?.text = "h"
         return cell
     }

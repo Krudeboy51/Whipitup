@@ -22,7 +22,7 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
         super.viewDidLoad()
         jsonParser.search("")
         mainlist = jsonParser.mReicpeList
-        jsonParser.mReicpeList.removeAtIndex(0)
+        jsonParser.mReicpeList.remove(at: 0)
         print(jsonParser.mReicpeList.count)
         
         searchController.dimsBackgroundDuringPresentation = false
@@ -33,7 +33,7 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.tableView.reloadData()
     }
 
@@ -44,26 +44,26 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return jsonParser.mReicpeList.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTBVCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTBVCell
         let mDict: Dictionary<String, String> = jsonParser.mReicpeList[indexPath.row]
         
         if jsonParser.mReicpeList.count > 1{
-            let img = NSURL(string: mDict[mCONSTANTS.food2fork.resultKey.imageURL]!)
+            let img = URL(string: mDict[mCONSTANTS.food2fork.resultKey.imageURL]!)
             var pub = mDict[mCONSTANTS.food2fork.resultKey.publisher]
-            pub = pub?.stringByReplacingOccurrencesOfString("http://", withString: "")
+            pub = pub?.replacingOccurrences(of: "http://", with: "")
             cell.rectitle.text = mDict[mCONSTANTS.food2fork.resultKey.title]
             cell.pub.text = pub
-            let data = NSData(contentsOfURL: img!)
+            let data = try? Data(contentsOf: img!)
             if data != nil{
                 cell.recimage.image = UIImage(data: data!)
             }
@@ -74,16 +74,16 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
         return cell
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
  
     
-    func loadAsyncImgs(url: String, imgV: UIImageView, position: Int){
-        let dlQueue = dispatch_queue_create("com.mrkking.whipitup", nil)
+    func loadAsyncImgs(_ url: String, imgV: UIImageView, position: Int){
+        let dlQueue = DispatchQueue(label: "com.mrkking.whipitup", attributes: [])
         
-        dispatch_async(dlQueue){
-            let data = NSData(contentsOfURL: NSURL(string: url)!)
+        dlQueue.async{
+            let data = try? Data(contentsOf: URL(string: url)!)
             
             var image: UIImage?
             
@@ -92,17 +92,17 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
             }else{
                 print("image did not load \(position)")
                 //print(self.mainlist[position])
-                self.mainlist.removeAtIndex(position)
+                self.mainlist.remove(at: position)
                 self.tableView.reloadData()
             }
             
-            dispatch_async(dispatch_get_main_queue()){
+            DispatchQueue.main.async{
                 imgV.image = image
             }
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //let dict = mainlist[indexPath.row]
         
         //let list = dict[mConstants.keys.ingredients]
@@ -114,21 +114,21 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
        // showDetailViewController(recipeVC, sender: self)
     }
 
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
     }
 
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         jsonParser.search(searchBar.text!)
         self.tableView.reloadData()
     }
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResultsForSearchController(_ searchController: UISearchController) {
         
         self.tableView.reloadData()
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
 
         self.tableView.reloadData()
     }
