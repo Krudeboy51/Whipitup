@@ -23,12 +23,16 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         jsonParser.getJsonFromLink(link)
-        titleLabel.text = jsonParser.recipe.title
        // webview.hidden = true
         //ingredientstbl.hidden = true
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print(jsonParser.recipe.vegan)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -22,7 +22,7 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
         super.viewDidLoad()
         jsonParser.search("")
         mainlist = jsonParser.mReicpeList
-        jsonParser.mReicpeList.remove(at: 0)
+        //jsonParser.mReicpeList.remove(at: 0)
         print(jsonParser.mReicpeList.count)
         
         searchController.dimsBackgroundDuringPresentation = false
@@ -58,12 +58,13 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
         let mDict: Dictionary<String, String> = jsonParser.mReicpeList[indexPath.row]
         
         if jsonParser.mReicpeList.count > 1{
-            let img = URL(string: mDict[mCONSTANTS.food2fork.resultKey.imageURL]!)
-            var pub = mDict[mCONSTANTS.food2fork.resultKey.publisher]
-            pub = pub?.replacingOccurrences(of: "http://", with: "")
-            cell.rectitle.text = mDict[mCONSTANTS.food2fork.resultKey.title]
-            cell.pub.text = pub
-            let data = try? Data(contentsOf: img!)
+          
+            let pub = mDict[mCONSTANTS.mashape.resultsKey.readyMin]
+            cell.rectitle.text = mDict[mCONSTANTS.mashape.resultsKey.title]
+            cell.pub.text = "Ready in: \(pub) mins"
+            let img = mDict[mCONSTANTS.mashape.resultsKey.image]!
+            print("IMG: \(img)")
+            let data = try? Data(contentsOf: URL(string: img)!)
             if data != nil{
                 cell.recimage.image = UIImage(data: data!)
             }
@@ -119,7 +120,12 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        jsonParser.search(searchBar.text!)
+        jsonParser.search(searchBar.text!)        
+        self.tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        //jsonParser.mReicpeList.removeAll()
         self.tableView.reloadData()
     }
     
@@ -128,8 +134,14 @@ class RecipeTableViewController: UITableViewController,  UISearchBarDelegate {
         self.tableView.reloadData()
     }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.tableView.reloadData()
+    }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-
+        if searchBar.text == ""{
+            
+        }
         self.tableView.reloadData()
     }
     

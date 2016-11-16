@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RecipeModel{
     var vegan = false
@@ -15,6 +16,7 @@ class RecipeModel{
     var title = ""
     var servings = 0
     var instructions = ""
+    
     struct extendedIngredients {
         var info = ""
         var name = ""

@@ -48,8 +48,8 @@ class MashapeJsonParser: NSObject{
                     var jError: NSError?
                     let parseData = JSON.init(data: mData, options: JSONSerialization.ReadingOptions.allowFragments, error: &jError)
                     
-                    self.recipe.title = parseData["title"].string!
-                    self.recipe.vegan = parseData["vegan"].bool!
+                    self.recipe.title = parseData["title"].stringValue
+                    self.recipe.vegan = parseData["vegan"].boolValue
                     self.recipe.prepMin = parseData["preperationMinutes"].intValue
                     self.recipe.cookmin = parseData["cookingMinutes"].intValue
                     self.recipe.servings = parseData["servings"].int!
@@ -58,8 +58,6 @@ class MashapeJsonParser: NSObject{
                        self.recipe.addIngredient(aisle: item["aisle"].stringValue, image: item["image"].stringValue, name: item["name"].stringValue, info: item["info"].stringValue)
 
                     }
-                    
-                     print(self.recipe.ingredients)
                 }
         }
         ).resume()

@@ -16,13 +16,11 @@ class F2FJsonParser: NSObject {
     var imgList =  Array<UIImage>()
     var searchString = ""
     
-    fileprivate func createLink(_ list: String, page: Int)->URL?{
+    fileprivate func createLink(_ list: String)->URL?{
         
-        var urlComp = URLComponents(string: mCONSTANTS.food2fork.link)
+        var urlComp = URLComponents(string: mCONSTANTS.mashape.serverLink)
         var linkparams = Dictionary<String, String>()
-        linkparams[mCONSTANTS.food2fork.linkKeys.page] = "\(page)"
-        linkparams[mCONSTANTS.food2fork.linkKeys.query] = list
-        linkparams[mCONSTANTS.food2fork.linkKeys.key] = mCONSTANTS.food2fork.apiKey
+        linkparams[mCONSTANTS.mashape.linkKeys.query] = list
         
         var query = Array<URLQueryItem>()
         
@@ -38,6 +36,7 @@ class F2FJsonParser: NSObject {
     fileprivate func getJsonFromLink(_ url: URL){
         var currentItem = Dictionary<String, String>()
         let request = URLRequest(url: url)
+        self.mReicpeList.removeAll()
         URLSession.shared.dataTask(with: request, completionHandler:
             {
                 (data, response, error) in
@@ -46,15 +45,18 @@ class F2FJsonParser: NSObject {
                 }else if let _ =  response, let mData = data{
                     var jError: NSError?
                     let parseData = JSON.init(data: mData, options: JSONSerialization.ReadingOptions.allowFragments, error: &jError)
+                    let baseURI = parseData[mCONSTANTS.mashape.resultsKey.baseURI].stringValue
                     
-                    for item in parseData[mCONSTANTS.food2fork.resultKey.recipe].arrayValue{
-                        currentItem[mCONSTANTS.food2fork.resultKey.title] = item[mCONSTANTS.food2fork.resultKey.title].stringValue
-                        currentItem[mCONSTANTS.food2fork.resultKey.sourceURL] = item[mCONSTANTS.food2fork.resultKey.sourceURL].stringValue
-                        currentItem[mCONSTANTS.food2fork.resultKey.publisher] = item[mCONSTANTS.food2fork.resultKey.publisher].stringValue
-                        currentItem[mCONSTANTS.food2fork.resultKey.imageURL] = item[mCONSTANTS.food2fork.resultKey.imageURL].stringValue
-                        print("Recipe List (f2f): \(currentItem)\n\n")
+                    for item in parseData[mCONSTANTS.mashape.resultsKey.results].arrayValue{
+                        
+                        currentItem[mCONSTANTS.mashape.resultsKey.id] = item[mCONSTANTS.mashape.resultsKey.id].stringValue
+                        currentItem[mCONSTANTS.mashape.resultsKey.title] = item[mCONSTANTS.mashape.resultsKey.title].stringValue
+                        currentItem[mCONSTANTS.mashape.resultsKey.readyMin] = item[mCONSTANTS.mashape.resultsKey.readyMin].stringValue
+                        currentItem[mCONSTANTS.mashape.resultsKey.image] = "\(baseURI)\(item[mCONSTANTS.mashape.resultsKey.image].stringValue)"
+                        //print("Recipe List (f2f): \(currentItem)\n\n")
                         self.mReicpeList.append(currentItem)
                     }
+                    
                     
                 }
         }
@@ -94,7 +96,7 @@ class F2FJsonParser: NSObject {
     
     func search(_ list: String){
         searchString = list
-        getJsonFromLink(createLink(searchString, page: page)!)
+        getJsonFromLink(createLink(searchString)!)
     }
     
     //implemental
